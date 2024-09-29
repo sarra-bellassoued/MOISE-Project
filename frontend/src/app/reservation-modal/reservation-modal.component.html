@@ -1,0 +1,55 @@
+<!-- <div class="mb-24" fxLayout="row">
+  <mat-form-field fxFlex>
+    <input matInput [matDatepicker]="picker" placeholder="Date de la réservation">
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field fxFlex>
+    <input matInput type="time" [(ngModel)]="reservationData.meetingDate" placeholder="Heure de la réservation">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="submitReservation()">Confirmer</button>
+
+</div> 
+ -->
+
+
+ <!-- <div class="modal-header">
+  <h4 class="modal-title">Réserver une collocation</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="submitReservation()">
+    <div class="form-group">
+      <label for="meetingDate">Date de la réservation</label>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Sélectionner la date" required [(ngModel)]="selectedDate" name="meetingDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <button type="submit" class="btn btn-primary">Confirmer</button>
+  </form>
+</div> -->
+
+
+<div class="modal-header">
+  <h4 class="modal-title">Réserver une collocation</h4>
+  <button type="button" class="close" aria-label="Close" (click)="cancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="submitReservation()">
+    <div class="form-group">
+      <label for="meetingDate">Date de la réservation</label>
+      <input type="date" class="form-control" id="meetingDate" required [(ngModel)]="selectedDate" name="selectedDate">
+    </div>
+    <div class="form-group">
+      <label for="meetingTime">Heure de la réservation</label>
+      <input type="time" class="form-control" id="meetingTime" required [(ngModel)]="selectedTime" name="selectedTime">
+    </div>
+    <button type="submit" class="btn btn-primary">Confirmer</button>
+  </form>
+</div>

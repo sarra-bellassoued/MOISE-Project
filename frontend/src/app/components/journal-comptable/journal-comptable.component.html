@@ -1,0 +1,30 @@
+<form [formGroup]="journalComptableForm" (ngSubmit)="onSubmit()" class="form-container">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="code">Code</label>
+        <input type="text" class="form-control" id="code" formControlName="code">
+      </div>
+      <div class="form-group">
+        <label for="libelle">Libellé</label>
+        <input type="text" class="form-control" id="libelle" formControlName="libelle">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="piece1Id">Pièce 1</label>
+        <select class="form-control" id="piece1Id" formControlName="piece1Id">
+          <option *ngFor="let piece of pieces" [value]="piece.id">{{ piece.id }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="piece2Id">Pièce 2</label>
+        <select class="form-control" id="piece2Id" formControlName="piece2Id">
+          <option *ngFor="let piece of pieces" [value]="piece.id">{{ piece.id }}</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+  </form>
+  <br>
+  <br>
+  <app-journal-comptable-affiche></app-journal-comptable-affiche>

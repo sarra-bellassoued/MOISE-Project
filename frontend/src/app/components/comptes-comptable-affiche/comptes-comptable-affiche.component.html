@@ -1,0 +1,15 @@
+<tbody>
+    <tr *ngFor="let compte of comptes">
+      <td>{{ compte.code }}</td>
+      <td>{{ compte.libelle }}</td>
+      <td>
+        <button class="edit" (click)="onEdit(compte)">
+          <i class="fas fa-edit"></i> Modifier
+        </button>
+        <button class="delete" (click)="onDelete(compte.id)">
+          <i class="fas fa-trash"></i> Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  

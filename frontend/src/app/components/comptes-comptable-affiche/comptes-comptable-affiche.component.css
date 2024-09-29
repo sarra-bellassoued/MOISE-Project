@@ -1,0 +1,61 @@
+/* Styles pour le tableau */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+table thead {
+  background-color: #007bff;
+  color: #fff;
+}
+
+table th, table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  font-weight: bold;
+}
+
+table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+table button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+table button:hover {
+  transform: scale(1.05);
+}
+
+table button.edit {
+  background-color: #28a745;
+}
+
+table button.edit:hover {
+  background-color: #218838;
+}
+
+table button.delete {
+  background-color: #dc3545;
+}
+
+table button.delete:hover {
+  background-color: #c82333;
+}
+
+/* Styles pour les icônes dans les boutons (si vous utilisez des icônes) */
+button i {
+  margin-right: 5px;
+}

@@ -1,0 +1,106 @@
+/* General Header Styles */
+.headerfour {
+    background-color: #f8f9fa; /* Light grey background for the header */
+    color: #343a40; /* Dark grey text color */
+}
+
+.top-header {
+    background-color: #ffffff; /* White background for the top header */
+    padding: 10px 20px;
+    text-align: center;
+    border-bottom: 1px solid #e1e5e9; /* Subtle border for separation */
+}
+
+.top-header .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-header img {
+    max-width: 100px; /* Adjust based on your image size */
+    border-radius: 50%; /* Circular image without border */
+}
+
+/* Navigation Header Styles */
+.header {
+    padding: 10px 20px;
+    border-bottom: 1px solid #e1e5e9; /* Light border under the navbar */
+}
+
+.header .navbar {
+    background: #ffffff; /* White background for the navbar */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+.header .container {
+    display: flex;
+    justify-content: center; /* Center the navigation menu */
+}
+
+.header .main-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Horizontal layout */
+    gap: 15px; /* Space between items */
+}
+
+.header .main-nav li {
+    position: relative;
+}
+
+.header .main-nav a {
+    display: block;
+    padding: 10px 20px;
+    color: #343a40;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 4px; /* Rounded corners for links */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header .main-nav a:hover,
+.header .main-nav .active > a {
+    background-color: #e9ecef; /* Light grey background on hover or active state */
+    color: #495057; /* Slightly darker text color on hover */
+}
+
+.header .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff; /* White background */
+    width: 220px; /* Adjust width as needed */
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for dropdown */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-10px);
+}
+
+.header .main-nav .has-submenu:hover .submenu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0); /* Slide down effect */
+}
+
+.header .submenu a {
+    padding: 10px 15px;
+    color: #343a40;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.header .submenu a:hover {
+    background-color: #f1f1f1; /* Light grey background on hover */
+}
+
+.header .submenu .submenu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #f1f1f1; /* Light grey background for nested submenu */
+}

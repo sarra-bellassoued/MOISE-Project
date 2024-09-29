@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>Compte</th>
+      <th>Débit</th>
+      <th>Crédit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr [formGroup]="ligne">
+      <td>
+        <div formGroupName="compte">
+          <select formControlName="id">
+            <option *ngFor="let compte of comptes" [value]="compte.id">{{ compte.libelle }}</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <input type="number" formControlName="debit" placeholder="Débit" (input)="debitChange.emit()">
+      </td>
+      <td>
+        <input type="number" formControlName="credit" placeholder="Crédit" (input)="creditChange.emit()">
+      </td>
+    </tr>
+  </tbody>
+</table>

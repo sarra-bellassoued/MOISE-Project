@@ -1,0 +1,75 @@
+/* General Form Styles */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #28a745; /* Light green color for labels */
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da; /* Light gray border */
+    background-color: #fff; /* White background */
+    color: #333; /* Dark text color */
+}
+
+.form-control:focus {
+    border-color: #28a745; /* Light green border on focus */
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); /* Light green shadow */
+}
+
+/* Primary Button Styles */
+.btn-primary {
+    color: #fff; /* White text color */
+    background-color: #28a745; /* Light green background */
+    border-color: #28a745; /* Light green border */
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #1e7e34; /* Darker green border on hover */
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5); /* Darker green shadow */
+}
+
+/* Form Container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between rows */
+}
+
+/* Form Row Container */
+.form-row {
+    display: flex;
+    gap: 20px; /* Space between columns */
+}
+
+/* Form Group */
+.form-group {
+    flex: 1; /* Equal width for form groups */
+    min-width: 150px; /* Minimum width for form groups */
+}
+
+/* Submit Button */
+.btn {
+    align-self: flex-start; /* Align button to the start */
+    margin-top: 20px; /* Space above the button */
+}

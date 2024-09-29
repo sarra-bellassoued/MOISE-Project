@@ -1,0 +1,47 @@
+<div class="content">
+  <div class="content">
+  <form [formGroup]="pieceComptableForm" (ngSubmit)="onSubmit()">
+    <div class="field-row">
+      <div class="field-container">
+        <label for="journalId">Journal:</label>
+        <select formControlName="journalId" id="journalId">
+          <option *ngFor="let journal of journaux" [value]="journal.id">{{ journal.libelle }}</option>
+        </select>
+      </div>
+
+      <div class="field-container">
+        <label for="date">Date:</label>
+        <input type="date" formControlName="date" id="date" />
+      </div>
+
+      <div class="field-container">
+        <label for="reference">Référence:</label>
+        <input type="text" formControlName="reference" id="reference" />
+      </div>
+    </div>
+
+
+    <div formArrayName="lignes">
+      <div *ngFor="let ligne of lignes.controls; let i = index" [formGroupName]="i" class="ligne-row">
+        <app-ligne-comptable [ligne]="$any(lignes.controls[i])" [comptes]="comptes" (debitChange)="onDebitChange(i)" (creditChange)="onCreditChange(i)"></app-ligne-comptable>
+        <button type="button" class="remove-button" (click)="removeLigne(i)">Supprimer</button>
+      </div>
+    </div>
+
+    <button type="button" (click)="addLigne()">Ajouter Ligne</button>
+       <!-- Affichage des sommes -->
+
+       <div class="totals">
+        <p>Total Débit: {{ totalDebit }}</p>
+        <p>Total Crédit: {{ totalCredit }}</p>
+        <p>Différence: {{ difference }}</p>
+      </div>
+    
+    <button type="submit">Enregistrer</button>
+  </form>
+</div>
+
+<br>
+<br>
+<br>
+<app-piece-comptable-affiche></app-piece-comptable-affiche>

@@ -1,0 +1,148 @@
+<div class="search-fields">
+    <div class="search-bar">
+        <label for="searchJournalId">Num_journal:</label>
+        <input 
+            type="text" 
+            id="searchJournalId"
+            class="form-control" 
+            placeholder="Rechercher par numero de journal..." 
+            [(ngModel)]="searchJournalId" 
+            (input)="filteredJournals()"
+        >
+    </div>
+
+    <div class="search-bar">
+        <label for="searchJournalCode">Code Journal:</label>
+        <input 
+            type="text" 
+            id="searchJournalCode"
+            class="form-control" 
+            placeholder="Rechercher par code de journal..." 
+            [(ngModel)]="searchJournalCode" 
+            (input)="filteredJournals()"
+        >
+    </div>
+
+    <div class="search-bar">
+        <label for="searchJournalLibelle">Libelle journal:</label>
+        <input 
+            type="text" 
+            id="searchJournalLibelle"
+            class="form-control" 
+            placeholder="Rechercher par Libelle de journal..." 
+            [(ngModel)]="searchJournalLibelle" 
+            (input)="filteredJournals()"
+        >
+    </div>
+
+    <div class="search-bar">
+        <label for="searchPieceReference">Reference piece:</label>
+        <input 
+            type="text" 
+            id="searchPieceReference"
+            class="form-control" 
+            placeholder="Rechercher par Reference de la piece..." 
+            [(ngModel)]="searchPieceReference" 
+            (input)="filteredJournals()"
+        >
+    </div>
+    <div class="search-bar">
+        <label for="search">num_piece :</label>
+        <input 
+            type="text" 
+            id="searchPieceId"
+            class="form-control" 
+            placeholder="Rechercher par numero de la piece..." 
+            [(ngModel)]="searchPieceId" 
+            (input)="filteredJournals()"
+        >
+    </div>
+    <div class="search-bar">
+        <label for="searchPieceDate">Date pièce:</label>
+        <input 
+            type="date" 
+            id="searchPieceDate"
+            class="form-control" 
+            [(ngModel)]="searchPieceDate" 
+            (input)="filteredJournals()"
+        >
+    </div>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Num_journal</th>
+            <th>code_journal</th>
+            <th>Libelle</th>
+            <th>Num_piece</th>
+            <th>References pièces</th>
+            <th>Date pièce</th>
+            <th>Ecriture Comptable</th>
+            <th>Export PDF</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let journal of filteredJournals()" class="journal">
+            <td>{{ journal.id }}</td>
+            <td>{{ journal.code }}</td>
+            <td>{{ journal.libelle }}</td>
+            <td>
+                <ul>
+                    <li *ngFor="let piece of filteredPieces(journal)">
+                       {{ piece.id }}
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let piece of filteredPieces(journal)">
+                        {{ piece.reference }}
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let piece of filteredPieces(journal)">
+                        {{ piece.date | date:'dd/MM/yyyy' }}
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let piece of filteredPieces(journal)">
+                        <table *ngIf="piece.lignes && piece.lignes.length > 0">
+                            <thead>
+                                <tr>
+                                    <th>Compte</th>
+                                    <th>Débit</th>
+                                    <th>Crédit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ligne of piece.lignes">
+                                    <td>{{ ligne.compte.libelle }}</td>
+                                    <td>{{ ligne.debit }}</td>
+                                    <td>{{ ligne.credit }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p *ngIf="piece.lignes.length === 0">Aucune ligne comptable disponible.</p>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="exportMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Exporter
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="exportMenuButton">
+                        <a class="dropdown-item" href="#" (click)="generatePDF(journal)">Télécharger PDF</a>
+                        <a class="dropdown-item" href="#" (click)="generateExcel(journal)">Télécharger Excel</a>
+                        
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

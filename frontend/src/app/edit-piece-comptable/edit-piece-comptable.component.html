@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Modifier la pièce comptable</h2>
+<mat-dialog-content>
+  <!-- Add form fields for editing piece comptable -->
+  <mat-form-field>
+    <mat-label>Référence</mat-label>
+    <input matInput [(ngModel)]="pieceComptable.reference">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input type="date" matInput [(ngModel)]="pieceComptable.date">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Journal</mat-label>
+    <input matInput [(ngModel)]="pieceComptable.journal.libelle">
+  </mat-form-field>
+  
+  <!-- Add other fields as needed -->
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="save()">Enregistrer</button>
+  <button mat-button (click)="cancel()">Annuler</button>
+</mat-dialog-actions>

@@ -1,0 +1,90 @@
+<div class="search-fields">
+  <div class="search-bar">
+    <label for="searchReference">Référence:</label>
+    <input 
+      type="text" 
+      id="searchReference"
+      class="form-control" 
+      placeholder="Rechercher par référence..." 
+      [(ngModel)]="searchReference" 
+      (input)="filterPieces()"
+    >
+  </div>
+
+  <div class="search-bar">
+    <label for="searchDate">Date:</label>
+    <input 
+      type="text" 
+      id="searchDate"
+      class="form-control" 
+      placeholder="Rechercher par date..." 
+      [(ngModel)]="searchDate" 
+      (input)="filterPieces()"
+    >
+  </div>
+
+  <div class="search-bar">
+    <label for="searchId">Numéro de pièce:</label>
+    <input 
+      type="text" 
+      id="searchId"
+      class="form-control" 
+      placeholder="Rechercher par ID..." 
+      [(ngModel)]="searchId" 
+      (input)="filterPieces()"
+    >
+  </div>
+</div>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Num pièce</th>
+      <th>Référence</th>
+      <th>Date</th>
+      <th>Journal</th>
+      <th>Ecriture comptable</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pieceComptable of filteredPieceComptables">
+      <td>{{ pieceComptable?.id }}</td>
+      <td>{{ pieceComptable?.reference }}</td>
+      <td>{{ pieceComptable?.date | date }}</td>
+      <td>{{ pieceComptable?.journal?.libelle }}</td>
+      <td>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Compte ID</th>
+              <th>Débit</th>
+              <th>Crédit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ligne of pieceComptable?.lignes">
+              <td>{{ ligne?.compte?.id }}</td>
+              <td>{{ ligne?.debit }}</td>
+              <td>{{ ligne?.credit }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+      <td>
+        <td>
+        <button class="btn btn-primary" (click)="updatePiece(pieceComptable)">Mettre à jour</button>
+      </td>
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="exportMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Exporter
+          </button>
+          <div class="dropdown-menu" aria-labelledby="exportMenuButton">
+            <a class="dropdown-item" href="#" (click)="generatePDF(pieceComptable)">Télécharger PDF</a>
+            <a class="dropdown-item" href="#" (click)="generateExcel(pieceComptable)">Télécharger Excel</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

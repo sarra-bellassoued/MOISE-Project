@@ -1,0 +1,29 @@
+<form [formGroup]="compteForm" (ngSubmit)="onSubmit()">
+  <label for="code">Code:</label>
+  <input type="text" formControlName="code" id="code" />
+
+  <label for="libelle">Libellé:</label>
+  <input type="text" formControlName="libelle" id="libelle" />
+
+  <button type="submit">Enregistrer</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Libellé</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let compte of comptes">
+      <td>{{ compte.code }}</td>
+      <td>{{ compte.libelle }}</td>
+      <td>
+        <button class="edit" (click)="onEdit(compte)">Modifier</button>
+        <button class="delete" (click)="onDelete(compte.id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
